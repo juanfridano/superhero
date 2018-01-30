@@ -1,0 +1,27 @@
+{
+  "name": "delete hero",
+  "request": {
+    "url": "http://localhost:8083/delete",
+    "method": "POST",
+    "header": [
+      {
+        "key": "Authorization",
+        "value": "Basic aWFtOmJhdG1hbg==",
+        "description": ""
+      }
+    ],
+    "body": {
+      "mode": "formdata",
+      "formdata": [
+        {
+          "key": "id",
+          "value": "8",
+          "description": "",
+          "type": "text"
+        }
+      ]
+    },
+    "description": ""
+  },
+  "response": []
+}

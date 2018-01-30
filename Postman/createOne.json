@@ -1,0 +1,57 @@
+{
+  "name": "create hero",
+  "request": {
+    "url": "http://localhost:8083/create",
+    "method": "POST",
+    "header": [
+      {
+        "key": "Authorization",
+        "value": "Basic aWFtOmJhdG1hbg==",
+        "description": ""
+      }
+    ],
+    "body": {
+      "mode": "formdata",
+      "formdata": [
+        {
+          "key": "pseudonym",
+          "value": "Pink Panther",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "publisher",
+          "value": "MARVEL",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "skills",
+          "value": "Investigate, Cool Cars, Run FAst, jump high",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "alliesId",
+          "value": "2,3,4,5,6,7",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "firstAppearence",
+          "value": "1984-11-01",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "name",
+          "value": "Barry Allen",
+          "description": "",
+          "type": "text"
+        }
+      ]
+    },
+    "description": ""
+  },
+  "response": []
+}

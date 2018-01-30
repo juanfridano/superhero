@@ -1,0 +1,17 @@
+{
+  "name": "get hero by id",
+  "request": {
+    "url": "http://localhost:8083/hero/11",
+    "method": "GET",
+    "header": [
+      {
+        "key": "Authorization",
+        "value": "Basic aWFtOmJhdG1hbg==",
+        "description": ""
+      }
+    ],
+    "body": {},
+    "description": ""
+  },
+  "response": []
+}

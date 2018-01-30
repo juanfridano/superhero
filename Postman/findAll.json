@@ -1,0 +1,17 @@
+{
+  "name": "find all heroes",
+  "request": {
+    "url": "http://localhost:8083/findall",
+    "method": "GET",
+    "header": [
+      {
+        "key": "Authorization",
+        "value": "Basic MTIzOjQ1Ng==",
+        "description": ""
+      }
+    ],
+    "body": {},
+    "description": ""
+  },
+  "response": []
+}
