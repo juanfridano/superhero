@@ -1,7 +1,7 @@
 {
   "name": "create hero",
   "request": {
-    "url": "http://localhost:8083/create",
+    "url": "http://obscure-lowlands-14188.herokuapp.com/create",
     "method": "POST",
     "header": [
       {

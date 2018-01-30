@@ -1,7 +1,7 @@
 {
   "name": "delete hero",
   "request": {
-    "url": "http://localhost:8083/delete",
+    "url": "http://obscure-lowlands-14188.herokuapp.com/delete",
     "method": "POST",
     "header": [
       {

@@ -1,7 +1,7 @@
 {
   "name": "find all heroes",
   "request": {
-    "url": "http://localhost:8083/findall",
+    "url": "http://obscure-lowlands-14188.herokuapp.com/findall",
     "method": "GET",
     "header": [
       {

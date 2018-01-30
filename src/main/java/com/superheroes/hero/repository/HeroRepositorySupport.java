@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,13 +20,19 @@ public class HeroRepositorySupport {
     HeroRepository heroRepository;
 
     public Hero createEntityFromParameters(String pseudonym, String name, String publisher, List<String> skills, List<String> alliesId, Date firstAppearence) {
+        List<Integer> allies;
+        if (alliesId != null && alliesId.size() > 0){
+            allies = alliesId.stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }else {
+            allies = new ArrayList<>();
+        }
         Hero result = new Hero();
         result.setName(name);
         result.setPseudonym(pseudonym);
         result.setSkills(skills);
-        result.setAlliesId(alliesId.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList()));
+        result.setAlliesId(allies);
         result.setPublisher(Publisher.valueOf(publisher.toUpperCase()));
         result.setFirstAppearence(firstAppearence);
         heroRepository.save(result);

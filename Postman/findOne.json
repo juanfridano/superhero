@@ -1,7 +1,7 @@
 {
   "name": "get hero by id",
   "request": {
-    "url": "http://localhost:8083/hero/11",
+    "url": "http://obscure-lowlands-14188.herokuapp.com/hero/11",
     "method": "GET",
     "header": [
       {
