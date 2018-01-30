@@ -20,14 +20,13 @@ public class HeroRepositorySupport {
     HeroRepository heroRepository;
 
     public Hero createEntityFromParameters(String pseudonym, String name, String publisher, List<String> skills, List<String> alliesId, Date firstAppearence) {
-        List<Integer> allies;
-        if (alliesId != null && alliesId.size() > 0){
-            allies = alliesId.stream()
-                    .map(Integer::parseInt)
-                    .collect(Collectors.toList());
-        }else {
-            allies = new ArrayList<>();
+        List<Integer> allies = new ArrayList<>();
+        for (String s : alliesId){
+            if (!s.isEmpty()){
+                allies.add(Integer.parseInt(s));
+            }
         }
+
         Hero result = new Hero();
         result.setName(name);
         result.setPseudonym(pseudonym);

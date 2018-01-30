@@ -79,8 +79,8 @@ public class HeroController {
         return date;
     }
 
-    private List<String> separateCSV(String skills) {
-        return Arrays.asList(skills.split("\\s*,\\s*"));
+    private List<String> separateCSV(String csv) {
+        return Arrays.asList(csv.split("\\s*,\\s*"));
     }
 
     private void checkExists(String id) {
@@ -106,7 +106,9 @@ public class HeroController {
 
         //Exception thrown from called method in case id is invalid
         for(String id :separateCSV(alliesId)){
-            checkExists(id);
+            if (id != null && !id.isEmpty()){
+                checkExists(id);
+            }
         }
 
         if (publisher == null || publisher.isEmpty()){
