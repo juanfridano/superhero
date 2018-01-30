@@ -1,24 +1,30 @@
-package com.superheroes.hero;
+package com.superheroes.hero.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "hero")
 public class Hero {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column
     private String pseudonym;
+    @Column
+    private String name;
+    @Column
     private Publisher publisher;
+    @ElementCollection
     private List<String> skills;
-    private List<String> allies;
+    @ElementCollection
+    private List<Integer> alliesId;
+    @Column
     private Date firstAppearence;
 
-    public Hero(Integer id, String pseudonym, Publisher publisher, List<String> skills, List<String> allies, Date firstAppearence) {
-        this.id = id;
-        this.pseudonym = pseudonym;
-        this.publisher = publisher;
-        this.skills = skills;
-        this.allies = allies;
-        this.firstAppearence = firstAppearence;
+    public Hero() {
     }
 
     public Integer getId() {
@@ -37,6 +43,14 @@ public class Hero {
         this.pseudonym = pseudonym;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Publisher getPublisher() {
         return publisher;
     }
@@ -53,12 +67,12 @@ public class Hero {
         this.skills = skills;
     }
 
-    public List<String> getAllies() {
-        return allies;
+    public List<Integer> getAlliesId() {
+        return alliesId;
     }
 
-    public void setAllies(List<String> allies) {
-        this.allies = allies;
+    public void setAlliesId(List<Integer> alliesId) {
+        this.alliesId = alliesId;
     }
 
     public Date getFirstAppearence() {
