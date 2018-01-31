@@ -19,6 +19,16 @@ public class HeroRepositorySupport {
     @Autowired
     HeroRepository heroRepository;
 
+    /**
+     * Persists the a Hero into the DB.
+     * @param pseudonym
+     * @param name
+     * @param publisher
+     * @param skills
+     * @param alliesId
+     * @param firstAppearence
+     * @return the persisted Hero
+     */
     public Hero createEntityFromParameters(String pseudonym, String name, String publisher, List<String> skills, List<String> alliesId, Date firstAppearence) {
         List<Integer> allies = new ArrayList<>();
         for (String s : alliesId){
@@ -39,18 +49,36 @@ public class HeroRepositorySupport {
     }
 
 
+    /**
+     * Checks if the Hero exists in the DB
+     * @param id
+     * @return true if exists, flas if it doesn't
+     */
     public boolean existsById(int id) {
         return heroRepository.existsById(id);
     }
 
+    /**
+     * Finds a hero by Id
+     * @param id
+     * @return selected hero
+     */
     public Hero findOne(int id) {
         return heroRepository.findOne(id);
     }
 
+    /**
+     * deletes a Hero by Id
+     * @param id
+     */
     public void deleteOne(int id) {
         heroRepository.delete(findOne(id));
     }
 
+    /**
+     * finds all Heroes in the DB
+     * @return all heroes
+     */
     public List<Hero> findAll() {
         return heroRepository.findAll();
     }

@@ -2,8 +2,10 @@ package com.superheroes.hero.rest.controller;
 
 import com.superheroes.hero.domain.Hero;
 import com.superheroes.hero.domain.Publisher;
+import com.superheroes.hero.exception.InvalidRequestArgumentException;
 import com.superheroes.hero.repository.HeroRepositorySupport;
 import com.superheroes.hero.rest.responses.ResponseBuilder;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -11,6 +13,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,6 +21,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -61,6 +65,18 @@ public class HeroControllerTest {
         JSONAssert.assertEquals(expected, result.getResponse()
                 .getContentAsString(), false);
     }
+
+    @Test
+    public void unexistingHeroThrowsExeption() throws Exception{
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
+                "/hero/95648").accept(
+                MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+        // Hero with ID 95648 does not exist
+        Assert.assertEquals(HttpStatus.valueOf(result.getResponse().getStatus()), HttpStatus.BAD_REQUEST);
+    }
+
 
     private Hero initializeHero() {
         Hero hero = new Hero();

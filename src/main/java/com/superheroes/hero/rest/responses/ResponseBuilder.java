@@ -20,6 +20,11 @@ public class ResponseBuilder {
     @Autowired
     HeroRepositorySupport heroRepositorySupport;
 
+    /**
+     * Transforms the Hero into an Entity that contains allies in form of Preview (Name and Link to Ally Entity itself).
+     * @param hero Hero to be transformed
+     * @return
+     */
     public HeroEntity createHeroEntity(Hero hero){
 
         return new HeroEntity()
@@ -32,6 +37,11 @@ public class ResponseBuilder {
                 .withFirstAppearence(getDate(hero.getFirstAppearence()));
     }
 
+    /**
+     * Transforms a List of Heroes into an Entity that contains allies in form of Preview.
+     * @param heroes List of Heroes to be transformed
+     * @return
+     */
     public List<HeroEntity> createHeroesEntities(List<Hero> heroes){
         List<HeroEntity> result = new ArrayList<>();
         for (Hero hero : heroes){
@@ -59,7 +69,7 @@ public class ResponseBuilder {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(firstAppearence);
-        
+
         return df.format(calendar.getTime());
     }
 }
