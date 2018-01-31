@@ -71,7 +71,7 @@ public class HeroController {
     private Date getDate(String firstAppearence) {
         Date date;
         try {
-            date = new SimpleDateFormat("YYYY-MM-DD").parse(firstAppearence);
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(firstAppearence);
         } catch (ParseException e) {
             throw new InvalidRequestArgumentException("Invalid date format YYYY-MM-DD");
         }

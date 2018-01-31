@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +55,11 @@ public class ResponseBuilder {
     }
 
     private String getDate(Date firstAppearence) {
-        DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-        return df.format(firstAppearence);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(firstAppearence);
+        
+        return df.format(calendar.getTime());
     }
 }
