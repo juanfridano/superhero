@@ -11,6 +11,5 @@ public class SpringSecurityConfig extends GlobalAuthenticationConfigurerAdapter 
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("iam").password("batman").roles("USER", "ADMIN");
-        System.out.println("global configurer finished");
     }
 }
