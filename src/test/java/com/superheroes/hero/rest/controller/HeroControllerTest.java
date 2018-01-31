@@ -2,7 +2,6 @@ package com.superheroes.hero.rest.controller;
 
 import com.superheroes.hero.domain.Hero;
 import com.superheroes.hero.domain.Publisher;
-import com.superheroes.hero.exception.InvalidRequestArgumentException;
 import com.superheroes.hero.repository.HeroRepositorySupport;
 import com.superheroes.hero.rest.responses.ResponseBuilder;
 import org.junit.Assert;
@@ -21,7 +20,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import javax.validation.constraints.AssertTrue;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -78,10 +77,10 @@ public class HeroControllerTest {
     }
 
 
-    private Hero initializeHero() {
+    private Hero initializeHero() throws Exception{
         Hero hero = new Hero();
         hero.setId(3);
-        hero.setFirstAppearence(new Date());
+        hero.setFirstAppearence(new SimpleDateFormat("yyyy-MM-dd").parse("2018-01-30"));
         hero.setPublisher(Publisher.MARVEL);
         hero.setAlliesId(new ArrayList<>());
         hero.setSkills(Arrays.asList("run fast", "run slower than everybody else"));
